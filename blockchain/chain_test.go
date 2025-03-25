@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"math/rand"
 	"reflect"
+	"slices"
 	"testing"
 	"time"
 
@@ -1332,7 +1333,7 @@ func randomSelect(input []*testhelper.SpendableOut) (
 
 		// Remove the selected element from the input slice.
 		// This ensures that each selected element is unique.
-		input = append(input[:randIdx], input[randIdx+1:]...)
+		input = slices.Delete(input, randIdx, randIdx+1)
 	}
 
 	return input, selected
